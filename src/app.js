@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable consistent-return */
 const express = require('express');
@@ -16,6 +17,7 @@ const {
   addToArray2,
   removeNthElement2,
 } = require('./lib/arrays');
+const { negate, truthiness, isOdd, startsWith } = require('./lib/booleans');
 
 const app = express();
 
@@ -154,6 +156,36 @@ app.post('/arrays/starts-with-vowel', (req, res) => {
 app.post('/arrays/remove-element', (req, res) => {
   const index = req.query.index !== undefined ? parseInt(req.query.index) : 0;
   res.status(200).json({ result: removeNthElement2(index, req.body.array) });
+});
+
+app.post('/booleans/negate', (req, res) => {
+  const boolean = req.body.value;
+  res.status(200).json({ result: negate(boolean) });
+});
+
+app.post('/booleans/truthiness', (req, res) => {
+  let boolean = req.body.value;
+
+  if (boolean === undefined || boolean === null) {
+    boolean = false;
+  }
+
+  res.status(200).json({ result: truthiness(boolean) });
+});
+
+app.get('/booleans/is-odd/:number', (req, res) => {
+  const num = parseInt(req.params.number);
+  if (Number.isNaN(num)) {
+    res.status(400).json({ error: 'Parameter must be a number.' });
+  }
+  res.status(200).json({ result: isOdd(num) });
+});
+
+app.get('/booleans/:string/starts-with/:char', (req, res) => {
+  if (req.params.char.length > 1) {
+    res.status(400).json({ error: 'Parameter "character" must be a single character.' });
+  }
+  res.status(200).json({ result: startsWith(req.params.char, req.params.string) });
 });
 
 module.exports = app;
