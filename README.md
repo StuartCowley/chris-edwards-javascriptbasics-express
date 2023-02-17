@@ -15,7 +15,7 @@ Clone this repository to your local machine
 Navigate to the project directory in your terminal
 Install the required dependencies using `'npm install'`
 
-## Usage
+## Usage
 
 ## Running the Tests
 
