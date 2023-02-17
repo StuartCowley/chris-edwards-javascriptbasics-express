@@ -14,7 +14,8 @@ Postman
 Clone this repository to your local machine
 Navigate to the project directory in your terminal
 Install the required dependencies using `'npm install'`
-Usage
+
+## Usage
 
 ## Running the Tests
 
@@ -22,9 +23,9 @@ To run the tests, run the command `npm test`. This will run all the tests locate
 
 ## Starting the Server
 
-To start the Express server, run the `command npm start`. This will start the server on port 3000 by default.
+To start the Express server, run the command `npm start`. This will start the server on port 3000 by default.
 
-##Using the API with Postman##
+## Using the API with Postman
 
 The API contains several endpoints that can be tested using Postman.
 
